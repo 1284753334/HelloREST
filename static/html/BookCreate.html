@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookCreate</title>
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+
+    <script type="text/javascript">
+        {#对 Create 添加一个点击事件 #}
+        $(function(){
+        $('button').click(function () {
+            {#拿到值#}
+            var b_name =$('#b_name').val();
+            var b_price =$('#b_price').val();
+            {# 发送post 请求#}
+            $.post('/api/book/',{'b_name':b_name,'b_price':b_price}),function (data) {
+                console.log(data);
+                if (data['status'] === 201){
+                    window.open('/static/htmlList.html',target= '_self');
+
+                }
+
+            }
+        })
+        })
+    </script>
+</head>
+<body>
+<div id="container"></div>
+<form action="#">
+    <span>BookName:</span> <input type="text" id='b_name' placeholder="请输入你的书名">
+    <br>
+    <span>BookPrice</span> <input type="text" id="b_price" placeholder="请输入书的单价">
+</form>
+<button>Create</button>
+
+
+
+</body>
+</html>

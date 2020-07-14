@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="/static/html/jquery.js"></script>
+    <script type="text/javascript">
+       /* *
+       $(function () {
+
+            {# 获取所有书籍 在页面显示 #}
+            $.getJSON('/api/book',function (data) {
+                console.log(data)
+
+            })
+
+        })
+       */
+
+        $(function () {
+            $('button').click(function (data) {
+                console.log(data)
+
+                $.getJSON('/api/book',function (data) {
+                console.log(data)
+
+                    if (data['status'] === 200) {
+                        var $ul = $('ul');
+
+                        var books = data['data'];
+                        for (var i = 0; i < book.length; i++){
+                            var $li = $('<li></li>');
+                            $li.html = book[i]['b_name']
+
+
+                            }
+
+                    }
+                     })
+
+            })
+
+        })
+    </script>
+</head>
+<body>
+
+
+<div id="container"></div>
+    <button>ClickToload</button>
+<ul>
+
+</ul>
+
+</body>
+</html>
